@@ -119,3 +119,149 @@ a += 1; // 산술연산자가 다 가능 -,*,/ 등
 
 console.log(a);
 ```
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = 1;
+
+console.log(a === b); // true , === 일치 연산자 , a와 b의 데이터는 type과  값이 똑같아야 true가 나옴
+```
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = 3;
+
+console.log(a === b); //false , 값이 다름
+
+```
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = '123';
+
+console.log(a === b); // false , type이 다름 
+```
+
+# 매개 변수는?
+
+```jsx
+
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = 3;
+
+console.log(a === b);
+
+function isEqual(x, y) {
+  return x === y;
+}
+// isEqual(x,y) isEqual 함수를 작동시 매개변수로 x,y 값을 받을 것인데 
+console.log(isEqual(1, 1)); //true 출력
+// 그 매개변수의 값은 x=1 , y=1
+
+console.log(isEqual(2, '2')); // false 출력
+```
+
+# 같지 않다 ! ==
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = 3;
+
+console.log(a !== b); // true , 불일치 연산자
+```
+
+# 작다 <
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 1;
+const b = 1;
+
+console.log(a < b); // false
+```
+
+# 작거나 or 크거나 같다
+
+```jsx
+// 비교 연산자(comparison operator)
+
+const a = 7;
+const b = 7;
+
+console.log(a >= b); //true 
+```
+
+# ❗️ 꺽쇠 갈호는 앞에 배치되야 한다
+
+만약 =<  ⇒ 이런식으로 적으면 오류가 난다 왜? 이런 문법은 없으니깐 ㅎㅎ
+
+# 논리 연산자
+
+```jsx
+// 논리 연산자(logical operator)
+
+const a = 1 === 1; // true
+const b = 'AB' === 'AB'; //true
+const c = true; //true
+
+console.log(a);
+console.log(b);
+console.log(c);
+console.log('&&: ', a && b && c);//and 연산자 &&: true엔퍼센트 모두가 참일때 true를 표시 
+```
+
+```jsx
+// 논리 연산자(logical operator)
+
+const a = 1 === 1; // true
+const b = 'AB' === 'AB'; //true
+const c = false; //false
+
+console.log(a); //true
+console.log(b); //true
+console.log(c); //false
+
+console.log('&&: ', a && b && c); //and 연산자 false
+console.log('||: ', a || b); // or 연산자 true , 둘중 하나라도 true면 true
+console.log('!: ', !a); // not 연산자 a= true 인데, !a = false 출력
+```
+
+```jsx
+// 삼항 연산자(ternary operator)
+
+const a = 1 < 2;
+
+if (a) {
+  console.log('참');
+} else {
+  console.log('거짓');
+}
+
+// 참 출력
+```
+
+## 삼항 연산자 코드의 단순화
+
+```jsx
+const a = 1 < 2;
+
+if (a) {
+  console.log('참');
+} else {
+  console.log('거짓');
+}
+
+console.log(a ? '참' : '거짓'); 
+//참 ? 기준으로 앞부분이 즉 a가 참이면 : 앞부분 실행 그것이 아니면 뒷부분인 '거짓' 출력
+```
