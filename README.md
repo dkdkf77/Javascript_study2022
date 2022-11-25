@@ -265,3 +265,83 @@ if (a) {
 console.log(a ? '참' : '거짓'); 
 //참 ? 기준으로 앞부분이 즉 a가 참이면 : 앞부분 실행 그것이 아니면 뒷부분인 '거짓' 출력
 ```
+
+### getRandom file
+
+```jsx
+export default function random() {
+  return Math.floor(Math.random() * 10);
+}
+```
+
+### Main.js
+
+```jsx
+// 조건문(If statement)
+import random from './getRandom';
+
+const a = random();
+
+if (a === 0) {
+  console.log('a is 0');
+} else {
+  console.log('rest...');
+}
+// 만약 a 가 0이랑 일치 하면 a is 0 을 출력 그게 아니면 rest...을 출력
+// 현재 import 받아온 값은 getRandom에서 받아와 Math.floor(Math.random() * 10);
+// floor는 소수점 밑에 자리는 짤라버린다 결국 Math.random()의 명령어는 랜덤한 숫자를 출력하는데 * 10을 해줘서
+// 소수점 달린 정수로 출력하게 되고 floor에 의해 소수점은 짤리게 된다
+```
+
+ 
+
+```jsx
+// 조건문(If statement)
+import random from './getRandom';
+
+const a = random();
+
+if (a === 0) {
+  console.log('a is 0');
+} else if (a === 2) {
+  //추가 조건
+  console.log('a is 2');
+} else {
+  console.log('rest...');
+}
+// 만약 a 가 0이랑 일치 하면 a is 0 을 출력 그게 아니면 rest...을 출력
+// 현재 import 받아온 값은 getRandom에서 받아와 Math.floor(Math.random() * 10);
+// floor는 소수점 밑에 자리는 짤라버린다 결국 Math.random()의 명령어는 랜덤한 숫자를 출력하는데 * 10을 해줘서
+// 소수점 달린 정수로 출력하게 되고 floor에 의해 소수점은 짤리게 된다
+```
+
+# 조건문에 Swich 문
+
+### 위에 조건문을 swich로 바꿈
+
+```jsx
+// 조건문(If statement)
+import random from './getRandom';
+
+const a = random();
+
+switch (a) {
+  case 0:
+    console.log('a is 0');
+    break
+  case 2:
+    console.log('a is 2');
+    break
+  case 4:
+    console.log('a is 4');
+    break
+	default:
+		console.log('rest...');
+
+	// else 대신 default를 써주는데 case와 같이 값을 적을 필요도 break를 걸어줄 필요도 없다
+	// 물론 값을 써줘도 상관은 없다
+}
+
+// case 0이 맞으면 console.log('a is 0')을 출력하는데 break를 안걸어주면 계속 밑으로 내려가서
+// 실행되게 된다고 하니 하니씩 break를 걸어주는 것이 좋다
+```
