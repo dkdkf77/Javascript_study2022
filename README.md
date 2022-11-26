@@ -345,3 +345,66 @@ switch (a) {
 // case 0이 맞으면 console.log('a is 0')을 출력하는데 break를 안걸어주면 계속 밑으로 내려가서
 // 실행되게 된다고 하니 하니씩 break를 걸어주는 것이 좋다
 ```
+
+```jsx
+// 반복문 (For statement)
+// for (시작조건; 종료조건; 변화조건) {}
+
+for (let i = 0; i < 3; i += 1) {
+  console.log(i); // 0 1 2
+//let 변수를 선언하는데 재할당 가능한 변수
+}
+```
+
+```jsx
+// 반복문 (For statement)
+// for (시작조건; 종료조건; 변화조건) {}
+
+const ulEl = document.querySelector('ul');
+console.log(ulEl);
+
+for (let i = 0; i < 3; i++) {
+  const li = document.createElement('li');
+
+  li.textContent = `list-${i + 1}`;
+  ulEl.appendChild(li);
+  // 로직은, 1. 변수 li를 만들고 그 안에 li의 변수를 만들어 준다
+  // 2. li라는 변수에 textContent로 `list-${i + 1}`를 넣어 주는데
+  // 3. i = 0, 1, 2라는 값으로 +1을 해줘 1, 2, 3으로 만들어 준다 
+  // 4. 다음 ulEl의 변수를 불러와 그 안에 appenChild로 윗쪽 li 변수를 해준다
+  // 5. 변수를 선언하는데 재할당 가능한 변수
+}
+```
+
+![스크린샷 2022-11-26 오후 5 54 07](https://user-images.githubusercontent.com/88579497/204081719-142c48b1-5c30-4cef-9528-bb92c74814cf.png)
+![스크린샷 2022-11-26 오후 5 54 02](https://user-images.githubusercontent.com/88579497/204081722-c495dca9-c52e-48d7-90d0-2f60cfbfd2ea.png)
+
+
+```jsx
+// 반복문 (For statement)
+// for (시작조건; 종료조건; 변화조건) {}
+
+const ulEl = document.querySelector('ul');
+console.log(ulEl);
+
+for (let i = 0; i < 10; i++) {
+  const li = document.createElement('li');
+
+  li.textContent = `list-${i + 1}`;
+  if ((i + 1) % 2 === 0) {
+    li.addEventListener('click', function () {
+      console.log((li.textContent = '류승환 웹 개자이너'));
+    });
+  } else {
+    li.addEventListener('click', function () {
+      console.log((li.textContent = '류승환 최고!'));
+    });
+  }
+  ulEl.appendChild(li);
+
+// if문 클릭한게 만약 i + 1의 %2가 === 0 즉 홀수면 '류승환 웹 개자이너' 출력 ! , 그게 아니면 '류승환 최고!'출력!
+// 
+}
+```
+![스크린샷 2022-11-26 오후 6 11 42](https://user-images.githubusercontent.com/88579497/204081726-7e0dcddf-0e9c-4a55-b210-30abfa92e890.png)
+
