@@ -461,3 +461,34 @@ scope();
 // var를 사용하면 var a =123 => 함수 레벨에 적용이 되어 함수 안에서는 어디서든 쓸수 있다
 // 우리가 의도하지 않은 곳에서 사용할 수도 있고 메모리 누수로 이어질 수 있다 
 ```
+
+```jsx
+// 형 변환(Type conversion)
+
+//데이터의type은 문자, 숫자, 객체가 있다
+
+const a = 1;
+const b = '1';
+
+console.log(a === b); // false "타입이 다름"
+
+// === 일치 연산자 , == 동등 연산자 type은 달라도 true가 나옴
+// 동등 연산자는 되도록이면 안쓰는것을 추천 , 의도하지 않게 서로 다른 값이 같다라고 나와 오류를 생성할수 있다
+
+```
+
+```jsx
+// 형 변환(Type conversion)
+
+// Truthy(참 같은 값)
+// true, {}, [], 1, 2, 'false', -12, '3.14' ...
+
+// Falsy(거짓 같은 값)
+// false,'', null, undefined, 0, -0, NaN => Not a Number
+// falsy 값은 외워 주면 좋다 
+
+if ('false') {
+  console.log(123);
+}
+```	
+	
