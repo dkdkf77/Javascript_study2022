@@ -407,4 +407,57 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 ![스크린샷 2022-11-26 오후 6 11 42](https://user-images.githubusercontent.com/88579497/204081726-7e0dcddf-0e9c-4a55-b210-30abfa92e890.png)
+```jsx
+//변수 유효범위(Varialble Scope)
+//var, let, const
 
+function scope() {
+  if (true) {
+    const a = 123;
+    console.log(a);
+  }
+}
+
+scope();
+```
+
+```jsx
+//변수 유효범위(Varialble Scope)
+//var, let, const
+
+function scope() {
+  if (true) {
+    const a = 123;
+    console.log(a);
+  }
+  console.log(a); // 선언되지 않았다
+	// 유효 범위가 있는데 a라는 변수는 중괄호 안에서만 가능
+}
+
+scope();
+
+//var 는 사용이 권장되지 않는데
+```
+
+```jsx
+//변수 유효범위(Varialble Scope)
+//var, let, const
+
+function scope() {
+  if (true) {
+		console.log(a); // undefined
+    const a = 123;
+  }
+  console.log(a); // 선언되지 않았다
+	// 유효 범위가 있는데 a라는 변수는 중괄호 안에서만 가능
+}
+
+scope();
+
+//var 는 사용이 권장되지 않는데
+
+//let과 const는 블록(중괄호 부분) 레벨의 유효범위를 가진다
+
+// var를 사용하면 var a =123 => 함수 레벨에 적용이 되어 함수 안에서는 어디서든 쓸수 있다
+// 우리가 의도하지 않은 곳에서 사용할 수도 있고 메모리 누수로 이어질 수 있다 
+```
