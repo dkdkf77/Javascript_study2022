@@ -492,3 +492,65 @@ if ('false') {
 }
 ```	
 	
+```jsx
+//화살표 함수
+// ()=> {} vs function(){}
+
+const double = function (x) {
+  return x * 2;
+};
+
+console.log('double =', double(7));
+// 'double ='이라는 문자열과, double()로 함수 실행
+
+// 화살표 함수 = 기본적인 로직을 축약형으로 만들수 있다
+const doubleArrow = (x) => {
+  return x * 2;
+};
+
+console.log('doubleArrow=', doubleArrow(7));
+```
+
+# 화살표 함수 축약 하는 방법
+
+```jsx
+//화살표 함수 축약
+// 매개 변수가 1개 일시 소괄호도 생략할 수 있다 
+
+const doubleArrow = x => x * 2;
+
+console.log('doubleArrow=', doubleArrow(7)); // 14 
+```
+
+```jsx
+// 매개 변수가 2개 일때 축약형
+
+const doubleArrow = (x, y) => (x * 2) / y;
+
+console.log('doubleArrow=', doubleArrow(7, 10));
+```
+
+## 만약 축약할 때 객체 데이터와 중괄호가 겹칠때
+
+```jsx
+// 만약 객체 데이터를 만들 때는 중괄호{}를 사용하는데 겹쳐서 블록으로 해석된다
+// 축약형에서는 객체 데이터{}와 기본 화살표 함수 로직에 들어가는 중괄호와 {}
+// 겹치게 되는데 겹침 없이 객체 데이터를 만들고 싶으면 ({객체 데이터}) 로 만들어 주면 된다
+const doubleArrow = (x) => {
+
+};
+
+console.log(doubleArrow);
+```
+
+```jsx
+// 만약 객체 데이터를 만들 때는 중괄호{}를 사용하는데
+// 축약형에서는 객체 데이터{}와 기본 화살표 함수 로직에 들어가는 중괄호와 {}
+// 겹치게 되는데 겹침 없이 객체 데이터를 만들고 싶으면 ({객체 데이터}) 로 만들어 주면 된다
+
+const doubleArrow = (x) => ({
+  name: '류승환',
+});
+
+console.log(doubleArrow(name.text));
+```
