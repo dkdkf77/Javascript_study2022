@@ -556,3 +556,26 @@ const doubleArrow = (x) => ({
 
 console.log(doubleArrow(name.text));
 ```
+
+# IIFE
+
+### 즉시 실행 함수
+
+IIFE , Immediately-Invoked Function Expression
+
+```jsx
+const a = 7;
+function double() {
+  console.log(a * 2); //14
+}
+
+double();
+
+// 만약 함수를 만들었는데 기본적으로 만들어서 한번 실행되고
+// 쓸일이 없다면? 함수의 이름을 따로 만들어서 쓸 필요가 없다
+// 이때 즉시 실행 함수를 쓰게 되는데
+// 소괄호를 묶이게 되는데 뒤에 소괄호를 열고 닫아준다
+(function () {
+  console.log(a * 2);
+})(); // 14
+```
