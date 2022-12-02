@@ -579,3 +579,135 @@ double();
   console.log(a * 2);
 })(); // 14
 ```
+
+# 호이스팅(Hoisting)
+
+### 호이스팅 이란?
+
+hoist - 감아 올리다 라는 뜻을 가지고 있다
+
+```jsx
+//호이스팅(Hoisting)
+//함수 선언부가 유효범위(scope) 최상단으로 끌어올려지는 현상
+
+const a = 7;
+double();// 오류 더블이라는 함수가 만들어지지 않아 함수가 아니라는 뜻의 오류가 나오는 당연한 결과
+// 읽는 방향은 위에서 아래이니 당연한 결과이다 
+
+// 함수 표현 부분을 함수 선언 부분으로 바꾸면?
+const double = function () {
+  console.log(a * 2);
+};
+```
+
+### 함수 표현 부분을 함수 선언 부분으로 바꾸면?
+
+```jsx
+//호이스팅(Hoisting)
+//함수 선언부가 유효범위(scope) 최상단으로 끌어올려지는 현상
+
+const a = 7;
+double(); // 14 라는 결과 값이 나온다
+
+function double() {
+  console.log(a * 2); // 호이스팅이 되서 결과 값이 나온다 함수 선언은 밑에 선언을 해도 윗쪽에서 호출 가능
+}
+
+// 함수 안에는 복잡한 로직이 많이 나올건데 함수 이름만 보고도 대략적인 결과물을 유추 가능하다
+```
+
+# 타이머 함수
+
+### setTimeout 설정
+
+```jsx
+//타이머 함수
+//setTimeout(함수, 시간): 일정 시간 후 함수 실행
+//setInterval(함수, 시간): 시간 간격마다 함수 실행
+//clearTimeout(): 설정된 Timeout 함수를 종료
+//clearInterval(): 설정된 Interval 함수를 종료
+
+setTimeout(function () {
+  console.log('류승환!');
+}, 3000); // 3000 ms 3초
+
+// 3초 후 류승환 출력 
+```
+
+### clearTimeout
+
+```jsx
+//타이머 함수
+//setTimeout(함수, 시간): 일정 시간 후 함수 실행
+//setInterval(함수, 시간): 시간 간격마다 함수 실행
+//clearTimeout(): 설정된 Timeout 함수를 종료
+//clearInterval(): 설정된 Interval 함수를 종료
+
+const timer = setTimeout(function () {
+  console.log('류승환!');
+}, 3000); // 3000 ms 3초
+
+const a = document.querySelector('h1');
+
+//index.html 에 있는 h1 tag를 불러와서 a 변수에 넣어 준다 
+
+a.addEventListener('click', () => {
+  clearTimeout(timer);
+}); 
+
+//다음 a 변수에 이벤트를 추가하여 클릭 시 clearTimeout이 실행 되며 실행되는 변수는 timer로 정함
+```
+
+### setInterval 설정 및 종료
+
+```jsx
+//타이머 함수
+//setTimeout(함수, 시간): 일정 시간 후 함수 실행
+//setInterval(함수, 시간): 시간 간격마다 함수 실행
+//clearTimeout(): 설정된 Timeout 함수를 종료
+//clearInterval(): 설정된 Interval 함수를 종료
+
+const timer = setInterval(function () {
+  console.log('류승환!');
+}, 3000); // 3000 ms 3초
+
+const a = document.querySelector('h1');
+
+a.addEventListener('click', () => {
+  clearInterval(timer);
+});
+```
+
+# 콜백(Callback)
+
+함수의 인수로 사용되는 함수
+
+```jsx
+//콜백(Callback)
+//함수의 인수로 사용되는 함수
+
+//setTimeout(함수, 시간)
+
+// 뭔말?
+// 셋 타임아웃 호출하려면 첫번째 인수로는 실행하고 싶은 함수
+// 두번째 인수로는 시간
+// 여기서 사용된 첫번째 인수 함수가 콜백이라고 한다
+
+// 왜 콜백인지 그리고 어디에서 사용되는지?
+
+function timeout(callback) {
+  setTimeout(() => {
+    console.log('류승환!');
+    callback();
+  }, 3000);
+}
+
+timeout(() => {
+  console.log('Done!'); // 콜백함수
+});
+
+// 3초 다음 done이라는 출력을 보장 받고 싶을때
+// timeout() 호출에 콜백을 넣어 준다음 timeout(인수 선언) 및 호출
+// () => {console.log('Done!'); = callback
+// 특별한 실행 위치를 보장하기 위해 콜백함수를 사용한다고 한다
+```
