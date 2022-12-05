@@ -711,3 +711,114 @@ timeout(() => {
 // () => {console.log('Done!'); = callback
 // 특별한 실행 위치를 보장하기 위해 콜백함수를 사용한다고 한다
 ```
+# 생성자 함수(prototype)
+
+### this는?
+
+실행되는 객체 데이터를 말하는 것 
+
+즉 밑에 const ryu를 this 로 본다
+
+```jsx
+// 기본적인 객체 데이터의 구조
+// 중괄호
+// firstName lastName 속성 property, prop
+// getFullName = method 메소드  function으로 실행되는 속성값
+
+// 속성과 메소드를 통틀어서 멤버(Member)라고도 볼린다
+
+const ryu = {
+  firstName: 'ryu',
+  lastName: 'seunghwan',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(ryu.getFullName()); // ryu seunghwan
+```
+
+### Javascript Class 방식
+
+```jsx
+//우리가 기본적으로 알고 있는 것으로 일일히 만들어 줘야하는데 
+//현재 이러한 로직은 효율이 많이 떨어지는 로직
+// 객체 데이터를 만들때 마다 메모리에 할당되면서 만들어지는데 
+// javascript의 클래스를 쓰게 된다면?
+
+const ryu = {
+  firstName: 'ryu',
+  lastName: 'seunghwan',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(ryu.getFullName());
+
+const Do = {
+  firstName: 'do',
+  lastName: 'heasun',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(Do.getFullName());
+
+const Kim = {
+  firstName: 'kim',
+  lastName: 'minser',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(Kim.getFullName());
+```
+
+### user.prototype.getFullName = function 메소드
+
+![스크린샷 2022-12-05 오후 5 09 10](https://user-images.githubusercontent.com/88579497/205588203-a025d8f9-d509-4ad3-8038-f5a181d1a9ed.png)
+
+이렇게 user() 함수에 초기 값으로 getFullName 메소드를 넣어주는 명령어 인것 같다
+
+```jsx
+// 메모리에 한번만 만들어져 있는 값을 참조한다
+// 효율적인 메모리 관리
+user.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
+```
+
+## 생성자 함수는 파스칼 케이스로 User 대문자를 사용하여
+
+```jsx
+// 생성자 함수는 파스칼 케이스를 사용하여 
+// function User 만 보더라도 생성자 함수라는 것을 알아 볼수 있게 
+// 파스칼 케이스를 사용한다
+// 관행적으로 사용되는 것
+
+function User(first, last) {
+  this.firstName = first;
+  this.lastName = last;
+}
+// 메모리에 한번만 만들어져 있는 값을 참조한다
+// 효율적인 메모리 관리
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+// new 라는 키워드로 user() 함수를 실행하게 되었고
+// new는 생성자 함수 => 하나의 객체데이터를 생성
+// const ryu = {} 리터럴 방식으로 간단하게 {} 객체데이터를 생성
+// new 라는 키워드로 할당된 ryu, Do, Kim 은 인스턴스라고 한다
+
+const ryu = new User('ryu', 'seunghwan');
+const Do = new User('do', 'heasun');
+const Kim = new User('Kim', 'minser');
+
+console.log(ryu.getFullName());
+console.log(Do);
+console.log(Kim.getFullName());
+```
