@@ -822,3 +822,183 @@ console.log(ryu.getFullName());
 console.log(Do);
 console.log(Kim.getFullName());
 ```
+
+
+# This
+
+```jsx
+//this
+//일반(Normal)함수는 호출 위치에서 따라 this 정의!
+//화살표(Arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
+
+//함수 범위라는게 중요한 키워드
+// 일반 함수는 호출 위치, 화살표 함수는 함수 범위를 이해해야 한다
+
+//
+
+const ryu = {
+  name: 'ryu',
+  nick: 'chichi',
+  normal: function () {
+    // 메소드
+    console.log(this.name); //메소드 안 로직
+  },
+  arrow: () => {
+    console.log(this.nick);
+  },
+};
+
+ryu.normal();
+// ryu normal 메소드는 ryu의 객체데이터 내부에서 실행 된다
+// 호출 위치 name -> 앞에 ryu가 this
+ryu.arrow();
+// undefined
+// 화살표 함수 같은 경우는 자신이 선언된 어떠한 범위가 존재하고
+// 화살표의 this는 현재 객체 데이터 코드 안에서 this가 정확하게 무엇을 표현한지 알수 없고
+// 알수 없는 속성에서 nick을 찾으니 undefined가 뜨는 이유
+
+const Do = {
+  name: 'Do',
+  normal: ryu.normal,
+  arrow: ryu.arrow,
+};
+
+Do.normal(); //Do
+// Do.normal() = function(){console.log(this.name)}; 을 normal에 넣어줌
+// 호출 위치에서 노말 fucntion 같은 경우 호출되는 위치 즉 Do.normal()이 실행되는 바로
+// Do가 this가 되므로 name = Do가 잘 출력이 되는 것을 확인 할 수 있다
+Do.arrow(); //undefined
+```
+
+### 생성자 User 사용시 function 과 화살표 함수의 실행
+
+```jsx
+function User(name) {
+  this.name = name;
+}
+//User라는 생성자 밖에서 들어오는 인수는 name으로 받아서 this.name 안에 넣어줌
+const ryu = new User('ryu');
+// 생성자 인수로 ryu를 변수 ryu로 넣어줌
+
+User.prototype.normal = function () {
+  console.log(this.name); // ryu
+};
+
+//User 생성자 안 프로토타입에 normal을 생성하는데 그 노멀의 로직은 console.log(this.name)
+
+User.prototype.arrow = () => {
+  console.log(this.name); // undefined 이 화살표 함수가 선언된 이 함수 범위 내부에서 this가
+  // 실행되므로 undefined가 뜬다
+};
+
+ryu.normal();
+ryu.arrow();
+```
+
+### setTimeout 함수은 콜백함수로 에로우 함수를 사용하는 것을 추천
+
+```
+const timer = {
+  name: 'ryu',
+  timeout: function () {
+    setTimeout(() => {
+      console.log(this.name);
+    }, 2000);
+    // setTimeout 이라는 내부 로직의 인수로 콜백되어 사용되므로 undefined가 뜸
+    // 다르게 console.log(timer.name)을 주면 ryu가 잘 출력 된다
+    // 그럼 이러한 경우 화살표 함수를 쓰면 ? ryu가 잘 출력 되는 것을 볼 수 있다
+    // 화살표 함수를 감싸고 있는 함수가 timeout: function(){} 인것을 볼수 잇고
+    // 결국 화살표 함수를 감싸고 있는 추가적인 함수 범위가 있기 때문에
+    // 그 함수 범위에서 this는 곧 일반 함수가 정의된 timer가 this가 된다
+
+    // function 함수는 선언된게 명확하고 arrow함수는 명확하지 않다?
+    // 이것을 쉽게 이해할수 있는 방법이 없을까?
+    // setTimeout 이라는 인터벌을 사용할때는 콜백으로 일반 함수보다 화살표 함수를 쓰는 것을
+    // 추천한다 그이유는 setTimeout의 자바스크립트 어딘가에서 정의되는 것이 아닌 우리가 작성한
+    // 특정한 범위 내에서 this가 정의 될 수 있도록 만들어 줄 수 있어서
+  },
+};
+
+timer.timeout();
+```
+
+# ES6 Classes
+
+```jsx
+//ES6 Classes
+
+const ryu = {
+  name: 'ryu',
+  normal: function () {
+    console.log(this.name);
+  },
+  arrow: () => {
+    console.log(this.name);
+  },
+};
+
+ryu.normal();
+ryu.arrow();
+```
+
+### 일반 function(){} 축약
+
+```jsx
+normal~~: function~~ () {
+    console.log(this.name);
+  }, //ryu
+
+normal() {
+    console.log(this.name);
+  }, 
+//ryu function 함수와 동일하다고 생각할 것
+
+```
+
+# 상속(확장)
+```jsx
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name;
+    this.wheel = wheel;
+  }
+}
+
+const myVehicle = new Vehicle('운송수단', 2);
+console.log(myVehicle);
+// name = 운송수단 wheel = 2 인 객체 데이터를 출력
+// Vehicle {name : '운송수단', wheel: 2}
+
+// 상속
+class Bicycle extends Vehicle {
+  constructor(name, wheel) {
+    super(name, wheel);
+  }
+}
+
+const myBicycle = new Bicycle('삼천리', 2);
+const daughtersBicycle = new Bicycle('세발', 3);
+console.log(myBicycle);
+console.log(daughtersBicycle);
+
+//extends = 확장, 상속 Vehicle을  Bicycle에 상속하여 내부에서 사용하겠다
+// super라는 함수 = Vehicle을 의미
+//곧
+//super(name,wheel) =
+//constructor(name,wheel){
+//   this.name = name
+//   this.wheel = wheel
+//} 이것을 상속하여 쓴다는 것
+
+//확장
+class Car extends Vehicle {
+  constructor(name, wheel, license) {
+    super(name, wheel);
+    this.license = license;
+  }
+}
+const Mycar = new Car('운송', 4, 'true');
+console.log(Mycar); //Car {name:'운송', whell:4, license: 'true'}
+// 윗쪽 처럼 상속을 받아 this.license = license로 확장을 시켜준다
+// 만약 라이센스 부분에 공백이면 Car {name: '운송', wheel: 4, license: undefined}
+```
