@@ -1,7 +1,7 @@
 # gitignore_practice
 gitignore 연습 및 push 연습
 
-
+<hr/>
 # javascript 필수 
 
 ```jsx
@@ -39,7 +39,7 @@ console.log(getType(null)); // Null
 //       v
 //01234567890-1-2-3
 ```
-
+<hr/>
 # import 와 export 사용법
 
 # 다른 파일에 function 파일 내보내기
@@ -78,7 +78,7 @@ console.log(typeof []);
 console.log(getType(123));
 console.log(getType(null));
 ```
-
+<hr/>
 # 산술 연산자
 
 ```jsx
@@ -90,7 +90,7 @@ console.log(10 * 10); // 100
 console.log(10 / 5); //2
 console.log(7 % 5); //2 나머지 값
 ```
-
+<hr/>
 # 할당 연산자
 
 ```jsx
@@ -147,7 +147,7 @@ const b = '123';
 
 console.log(a === b); // false , type이 다름 
 ```
-
+<hr/>
 # 매개 변수는?
 
 ```jsx
@@ -168,7 +168,7 @@ console.log(isEqual(1, 1)); //true 출력
 
 console.log(isEqual(2, '2')); // false 출력
 ```
-
+<hr/>
 # 같지 않다 ! ==
 
 ```jsx
@@ -179,7 +179,7 @@ const b = 3;
 
 console.log(a !== b); // true , 불일치 연산자
 ```
-
+<hr/>
 # 작다 <
 
 ```jsx
@@ -190,7 +190,7 @@ const b = 1;
 
 console.log(a < b); // false
 ```
-
+<hr/>
 # 작거나 or 크거나 같다
 
 ```jsx
@@ -205,7 +205,7 @@ console.log(a >= b); //true
 # ❗️ 꺽쇠 갈호는 앞에 배치되야 한다
 
 만약 =<  ⇒ 이런식으로 적으면 오류가 난다 왜? 이런 문법은 없으니깐 ㅎㅎ
-
+<hr/>
 # 논리 연산자
 
 ```jsx
@@ -314,7 +314,7 @@ if (a === 0) {
 // floor는 소수점 밑에 자리는 짤라버린다 결국 Math.random()의 명령어는 랜덤한 숫자를 출력하는데 * 10을 해줘서
 // 소수점 달린 정수로 출력하게 되고 floor에 의해 소수점은 짤리게 된다
 ```
-
+<hr/>
 # 조건문에 Swich 문
 
 ### 위에 조건문을 swich로 바꿈
@@ -491,7 +491,7 @@ if ('false') {
   console.log(123);
 }
 ```	
-
+<hr/>
 # 화살표 함수	
 	
 ```jsx
@@ -579,7 +579,7 @@ double();
   console.log(a * 2);
 })(); // 14
 ```
-
+<hr/>
 # 호이스팅(Hoisting)
 
 ### 호이스팅 이란?
@@ -615,7 +615,7 @@ function double() {
 
 // 함수 안에는 복잡한 로직이 많이 나올건데 함수 이름만 보고도 대략적인 결과물을 유추 가능하다
 ```
-
+<hr/>
 # 타이머 함수
 
 ### setTimeout 설정
@@ -677,7 +677,7 @@ a.addEventListener('click', () => {
   clearInterval(timer);
 });
 ```
-
+<hr/>
 # 콜백(Callback)
 
 함수의 인수로 사용되는 함수
@@ -823,7 +823,7 @@ console.log(Do);
 console.log(Kim.getFullName());
 ```
 
-
+<hr/>
 # This
 
 ```jsx
@@ -922,6 +922,7 @@ const timer = {
 timer.timeout();
 ```
 
+<hr/>
 # ES6 Classes
 
 ```jsx
@@ -1001,4 +1002,123 @@ const Mycar = new Car('운송', 4, 'true');
 console.log(Mycar); //Car {name:'운송', whell:4, license: 'true'}
 // 윗쪽 처럼 상속을 받아 this.license = license로 확장을 시켜준다
 // 만약 라이센스 부분에 공백이면 Car {name: '운송', wheel: 4, license: undefined}
+```
+
+<hr/>
+# 문자
+
+## 자바스크립트 데이터를 다룰수 있는 명령문을 배운다
+
+### String
+
+```jsx
+// JS 데이터
+
+// String : '', "" , ``
+// Number
+// Boolean: true, false
+// undefined
+// null
+// Array : []
+// object: {}
+
+// 이렇게 배웠는데 그래서 자바스크립트로 어떻게 웹 사이트를 만드느냐?
+// ??
+
+// 그것이 중요한게 아니라 자바스크립트를 통해서 데이터를 처리하는 것 자체가 웹사이트를 만드는데 무조껀 필요하다
+
+//리터럴 방식이란?
+//=> 간략화 시켜 객체데이터 {} , 배열데이터 [] , 등 기호를 통해서 데이터를 손쉽게 만들어내는 방식
+
+// String
+
+//String.prototype.indexOf()
+//indexOf() 메서드는 호출한 String 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.
+
+const result = 'Hi Ryu world'.indexOf('world');
+
+console.log(result); //7
+
+// String.prototype.indexOf()
+```
+
+### Sring.length
+
+```jsx
+// 변수 안에는 문자, 숫자, 불린, 객체, 배열 데이터를
+// 넣을 수 있다
+
+// String.length
+const str = '0123';
+console.log(str.length);
+
+// 띄어쓰기도 공백 문자에 속한다
+```
+
+### Sring.indexOf() method
+
+```jsx
+const str = 'hi ryu';
+
+console.log(str.indexOf('ryu')); //3
+
+//만약 찾지 못하면 -1 결과값을 출력
+```
+
+```jsx
+const str = 'hi ryu';
+
+console.log(str.indexOf('Ryu') !== -1); //false
+
+// str.indexOf('ryu') 값이 있으면 true 출력, 없으면 false
+// 해석 str.indexOf('Ryu') = -1 
+// -1 == -1   true
+// 하지만 !== 이니깐 false 출력
+```
+
+### String.slice() method
+
+```jsx
+const str = 'hi ryu';
+
+console.log(str.slice(0, 3)); // hi
+
+// 두번째 인수 3으로 하면 0~2 번까지 slice로 추출함
+console.log(str.slice(3, 6)); // ryu
+```
+
+### String.replace() method
+
+```jsx
+const str = 'hi ryu';
+
+console.log(str.replace('hi', 'seunghwan')); //seunghwan ryu
+
+// 첫번째 인수에 대체될 대상, 두번째 인수에 대체될 텍스트
+
+// replace로 제거
+console.log(str.replace('hi ', '')); //ryu
+```
+
+### String.match() method
+
+```jsx
+const str = 'dkdkf312@gmail.com';
+
+//정규 표현식
+console.log(str.match(/.+(?=@)/));
+//['dkdkf312', index: 0, input: 'dkdkf312@gmail.com', groups: undefined]
+
+console.log(str.match(/.+(?=@)/)[0]);
+// dkdkf312
+```
+
+### String.trim() method
+
+```jsx
+const str = '       dkdkf312@gmail.com     ';
+//앞뒤로 공백 문자가 들어가 있을때
+
+console.log(str.trim()); //dkdkf312@gmail.com
+// 아이디를 입력할때 실수로 띄어쓰기를 하면 문자로 인식되는 문제가 있을때 사용
 ```
