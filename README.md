@@ -1122,3 +1122,43 @@ const str = '       dkdkf312@gmail.com     ';
 console.log(str.trim()); //dkdkf312@gmail.com
 // 아이디를 입력할때 실수로 띄어쓰기를 하면 문자로 인식되는 문제가 있을때 사용
 ```
+
+# 숫자와 수학
+
+### number method()
+
+```jsx
+const pi = 3.14159265358979;
+console.log(pi); //3.14159265358979
+
+const str = pi.toFixed(2); // 숫자 데이터 메소드, toFixed(2) point 2자리 제외 제거 인수로 소숫점 몇번째 자리까지 제거할지
+console.log(str); //3.14
+console.log(typeof str); //string typeof는 type을 알수 있는 명령어
+
+// 전역함수 = 전체 영역에서 사용할 수 있는 것
+
+const integer = parseInt(str); // 자바스크립트에서 사용할 수 있는 전역 함수
+//parse = 분석한다 인티저를 => 소숫점 밑 제거하면서 문자데이터를 숫자타입 변경
+const float = parseFloat(str); // 소숫점 밑 2개 유지하며 숫자타입 변경 
+
+console.log(integer); //3
+console.log(float); //3.14
+console.log(typeof integer, typeof float); //number number
+```
+
+## math mdn 으로 검색하여 math 탐방
+
+### math는 수학적인 상수와 함수를 위한 속성과 메서드를 가진 내장 객체
+
+```jsx
+console.log('abs(절대값): ', Math.abs(-12)); //12
+console.log('min(작은값):', Math.min(2, 8)); //2 8 인수로 들어 값 중 작은값
+console.log('max(큰값):', Math.max(2, 8)); //8 인수로 들어 값 중 큰값
+console.log('ceil(3.1~3.9 무조껀 올림):', Math.ceil(3.14)); //4
+console.log('floor(소숫점 밑 내림):', Math.floor(4.9)); //4
+console.log('round(3.5 이상 올리기):', Math.round(3.5)); // 4 반올림
+console.log('round(3.4 이하 소숫점 밑 자르기):', Math.round(3.1)); //3
+console.log('random:', Math.random()); // 랜덤 숫자 출력
+
+console.log(Math.floor(Math.random() * 10)); // 0 ~ 9 랜덤 값 출력
+```
