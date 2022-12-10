@@ -1162,3 +1162,54 @@ console.log('random:', Math.random()); // 랜덤 숫자 출력
 
 console.log(Math.floor(Math.random() * 10)); // 0 ~ 9 랜덤 값 출력
 ```
+<hr/>
+# 배열 데이터
+
+## mdn    Array.prototype.find()
+
+### find() 메서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환한다
+
+### 해석방법
+
+```jsx
+
+// find의 메소드가 콜백 함수를 받아 실행되는 형태로 
+// 배열 각각의 엘레먼트를 하나씩 받아 돌려주는데 
+// 5가 들어가서 10보다 큰지 판별 만족 못하면 다음 인덱스로 진행 되는 형태
+
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
+
+console.log(found);
+// expected output: 12
+```
+
+### .length
+
+```jsx
+// .length
+
+const numbers = [1, 2, 3, 4];
+const fruits = ['Apple', 'Banana', 'Cherry'];
+
+console.log(numbers.length); //4
+console.log(fruits.length); //3
+console.log([1, 2].length); //2
+```
+
+### .concat()
+
+```jsx
+// .concat()
+// numbers.concat(fruits)를 사용하면 numbers 배열 안에 fruits를 넣어준다
+
+const numbers = [1, 2, 3, 4];
+const fruits = ['Apple', 'Banana', 'Cherry'];
+
+console.log(numbers.concat(fruits));
+console.log(numbers);
+console.log(fruits);
+
+//concat을 사용했을때 원본의 데이터는 손상이 되지 않는다는것이 중요
+```
