@@ -1213,3 +1213,31 @@ console.log(fruits);
 
 //concat을 사용했을때 원본의 데이터는 손상이 되지 않는다는것이 중요
 ```
+
+### .forEach()
+
+```jsx
+//.forEach()
+
+const numbers = [1, 2, 3, 4];
+const fruits = ['Apple', 'Banana', 'Cherry'];
+
+numbers.forEach(function (element, index, array) {
+  console.log(element, index, array);
+});
+
+// 1 0 (4) [1, 2, 3, 4]
+// 2 1 (4) [1, 2, 3, 4]
+// 3 2 (4) [1, 2, 3, 4]
+// 4 3 (4) [1, 2, 3, 4]
+
+// forEach 로직은
+// .forEach(function(매개변수))
+// 매개변수 1 = 요소출력 , 매개변수 2 = 인덱스출력 , 매개변수 3 = 총 배열 출력 
+// 매개변수 3번째는 numbers 라는 배열데이터가 array 매개변수에 들어간다, 잘 사용되지 않음
+// 첫번째의 매개변수인 element는 item 대체되서 쓰인다고 한다
+// 때에 따라 매개변수의 명칭은 알아서 정하면 된다 
+// ex) fruits => function(fruit, i)
+
+//매개변수 총 3개 => 4개부터 undefined가 출력
+```
